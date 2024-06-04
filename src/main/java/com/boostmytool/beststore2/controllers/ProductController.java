@@ -22,7 +22,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.boostmytool.beststore2.models.Product;
 import com.boostmytool.beststore2.models.ProductDTO;
 import com.boostmytool.beststore2.services.ProductsRepository;
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 import jakarta.validation.Valid;
 
@@ -169,6 +168,25 @@ public class ProductController {
             System.out.println("Exception" + e.getMessage());
         }
 
+        return "redirect:/products";
+    }
+
+    @GetMapping("/delete")
+    public String Delete(@RequestParam int id) {
+        try {
+            Product product = repo.findById(id).get();
+            String uploadDir = "public/images/";
+            Path imagePath = Paths.get(uploadDir + product.getImageFileName());
+
+            try {
+                Files.delete(imagePath);
+            } catch (Exception e) {
+                System.out.println("Exception" + e.getMessage());
+            }
+            repo.delete(product);
+        } catch (Exception e) {
+            System.out.println("Exception" + e.getMessage());
+        }
         return "redirect:/products";
     }
 
