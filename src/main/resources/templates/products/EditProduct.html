@@ -49,7 +49,7 @@
                 <option value="Printers">Printers</option>
                 <option value="Cameras">Cameras</option>
               </select>
-              <p th:if="${#fields.hasErrors('brand')}" th:errorclass="text-danger" th:errors="${productDTO.brand}"></p>
+              <p th:if="${#fields.hasErrors('category')}" th:errorclass="text-danger" th:errors="${productDTO.category}"></p>
             </div>
           </div>
 
@@ -72,7 +72,7 @@
 
           <div class="row mb-3">
             <div class="offset-sm-4 col-sm-8">
-              <img src="@{'/images/' + ${product.imageFileName}}" alt="..." width="150">
+              <img th:src="@{'/images/' + ${product.imageFileName}}" alt="..." width="150">
             </div>
           </div>
 
@@ -82,7 +82,7 @@
               <div class="mb-3">
                 <input class="form-control" type="file" th:field="${productDTO.imageFile}">
               </div>
-              <p th:if="${#fields.hasErrors('price')}" th:errorclass="text-danger" th:errors="${productDTO.price}"></p>
+              <p th:if="${#fields.hasErrors('imageFile')}" th:errorclass="text-danger" th:errors="${productDTO.imageFile}"></p>
             </div>
           </div>
 
