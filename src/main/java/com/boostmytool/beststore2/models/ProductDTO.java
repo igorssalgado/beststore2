@@ -11,17 +11,17 @@ public class ProductDTO {
     @NotEmpty(message = "Name is required")
     private String name;
     
-    @NotEmpty(message = "brand is required")
+    @NotEmpty(message = "Brand is required")
     private String brand;
     
-    @NotEmpty(message = "category is required")
+    @NotEmpty(message = "Category is required")
     private String category;
     
-    @Min(0)
+    @NotEmpty(message = "Price is required")
     private String price;
 
-    @Size(min = 10, message = "at least 10 characters")
-    @Size(max = 2000, message = "max 2000 characters")
+    @Size(min = 10, message = "Min: 10 characters")
+    @Size(max = 2000, message = "Max: 2000 characters")
     private String description;
 
     private MultipartFile imageFile;
